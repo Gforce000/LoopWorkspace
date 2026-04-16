@@ -265,7 +265,7 @@ platform :ios do
     match_nuke(
       type: "appstore",
       team_id: "#{TEAMID}",
-      skip_confirmation: true,
+      skip_confirmation: false,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}")
     )
   end
@@ -294,7 +294,7 @@ platform :ios do
     # Handle case where no distribution certificates are found
     if distribution_certs.empty?
       puts "No Distribution certificates found! Triggering action to create certificate."
-      new_certificate_needed = true
+      new_certificate_needed = false
     else
       # Check for expiration
       distribution_certs.each do |cert|
